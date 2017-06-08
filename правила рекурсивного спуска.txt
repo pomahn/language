@@ -1,0 +1,10 @@
+G0 = '{' {Code}+ '}' { FUNC_OPISANIE }* \0 связывает узлы с ; 
+Code = IF | A    выдает указатель на ;
+IF = 'if' '(' EQ ')' '{' Code '}'
+FUNC_OPISANIE = 'function' Function_id '(' VAR ')' '{' {Code}* 'return' E ';' '}'
+A = VAR '=' E ';'
+EQ = E [> >= < <= == !=] E
+E = T { [+ -] T }*
+T = P { [* /] P }*
+P = '(' E ')' | NEN
+NEN = N | VAR | Function_id '(' E ')' 
